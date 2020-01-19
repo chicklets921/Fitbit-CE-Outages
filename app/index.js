@@ -5,9 +5,15 @@ import { vibration } from "haptics";
 const btn = document.getElementById("btn");
 const eventName = "triggerEvent";
 
-var outages = document.getElementById("OutageCount");
-var incidents = document.getElementById("IncidentCount");
-var updated = document.getElementById("UpdateTime");
+let container = document.getElementById("container");
+let currentIndex = container.value;
+container.value = 0;
+
+let outages = document.getElementById("OutageCount");
+let incidents = document.getElementById("IncidentCount");
+let updated = document.getElementById("UpdateTime");
+let total = document.getElementById("CustomerCount");
+let percent = document.getElementById("PercentOut");
 
 document.addEventListener("load", function () {
   sendEventIfReady(eventName);
@@ -31,12 +37,14 @@ messaging.peerSocket.onopen = function (eventName) {
 
 messaging.peerSocket.onmessage = function (evt) {
   // Log the returned info
-  // console.log(JSON.stringify(evt.data));
+  console.log(JSON.stringify(evt.data));
 
   //Write to the display
   outages.text = "Outages: " + evt.data[0]["OutageCount"];
   incidents.text = "Incidents: " + evt.data[0]["IncidentCount"];
   updated.text = evt.data[1]["UpdateTime"];
+  total.text = evt.data[0]["CustomerCount"];
+  percent.text = evt.data[0]["PctOut"] + "%";
 
   vibration.start("confirmation-max");
 }

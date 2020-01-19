@@ -1,9 +1,25 @@
 <svg class="background">
-  <text x="50%" y="50" class="medium-copy-bold">CE Outages Demo</text>
-  <use id="btn" href="#square-button" y="$-20" fill="white">
-    <set href="#text" attributeName="text-buffer" to="Update" />
+  <use id="container" href="#panoramaview">
+    <use id="item1" href="#panoramaview-item">
+      <text x="50%" y="50" class="medium-copy-bold">CE Outages Demo</text>
+      <use id="btn" href="#square-button" y="$-20" fill="white">
+        <set href="#text" attributeName="text-buffer" to="Update" />
+      </use>
+      <text id="OutageCount" class="outageInfo" x="50%" y="$+30"></text>
+      <text id="IncidentCount" class="outageInfo" x="50%" y="$"></text>
+      <text id="UpdateTime" class="outageInfo" x="50%" y="$"></text>
+    </use>
+
+    <use id="item2" href="#panoramaview-item">
+      <text class="outageInfo" x="50%" y="40%">Total Customers:</text>
+      <text id="CustomerCount" class="outageInfo" x="50%" y="$"></text>
+      <text id="PercentOut" class="outageInfo" x="50%" y="$+20"></text>
+    </use>
+
+    <!-- Have enough pagination dots for your slides (extras are hidden) -->
+    <use id="pagination-dots" href="#pagination-widget" y="8">
+      <use href="#pagination-highlight-dot" />
+      <use href="#pagination-dot" />
+    </use>
   </use>
-  <text id="OutageCount" class="outageInfo" x="50%" y="$+30">Loading info...</text>
-  <text id="IncidentCount" class="outageInfo" x="50%" y="$"></text>
-  <text id="UpdateTime" class="outageInfo" x="50%" y="$"></text>
 </svg>
