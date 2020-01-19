@@ -1,0 +1,31 @@
+{
+  "fitbit": {
+    "appUUID": "1483ca95-84ff-4149-9022-50a7fb1ac391",
+    "appType": "app",
+    "appDisplayName": "CE Outages",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#03a9f4",
+    "requestedPermissions": [
+      "access_internet"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini",
+      "mira"
+    ],
+    "i18n": {
+      "en": {
+        "name": "CE Outages"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0",
+    "@fitbit/sdk-cli": "^1.7.1"
+  },
+  "scripts": {
+    "build": "fitbit-build"
+  }
+}
