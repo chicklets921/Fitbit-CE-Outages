@@ -4,12 +4,11 @@
     "appType": "app",
     "appDisplayName": "CE Outages",
     "iconFile": "resources/icon.png",
-    "wipeColor": "#03a9f4",
+    "wipeColor": "#0079C1",
     "requestedPermissions": [
       "access_internet"
     ],
     "buildTargets": [
-      "higgs",
       "meson",
       "gemini",
       "mira"

@@ -1,53 +1,32 @@
-// export function OutagesAPI(){};
+import * as messaging from "messaging";
 
-// OutagesAPI.prototype.numberOfOutages = function(){
-//   let self = this;
-//   return new Promise(function(resolve, reject){
-//     let url = "https://www.consumersenergy.com/OutageMap/OutageMap/GetOutageCount?callback=getData";
+export function OutagesAPI() { };
 
-//     fetch(url).then(function(response){
-//       return response.json();
-//     }).then(function(json){
-//       console.log("GOT THE INFO!");
-//     }).catch(function(error){
-//       reject(error);
-//     });
-//   });
-// }
+OutagesAPI.prototype.currentOutages = function () {
 
+    let outagesRequest =
+        fetch('https://www.consumersenergy.com/OutageMap/OutageMap/GetOutageCount', {
+            method: "GET",
+            mode: "cors"
+        }).then(function (response) {
+            return response.json();
+        }).catch(function (error) {
+            console.log(error);
+        });
 
+    let updatedRequest =
+        fetch('https://www.consumersenergy.com/OutageMap/OutageMap/getLastMapUpdateTime', {
+            method: "GET",
+            mode: "cors"
+        }).then(function (response) {
+            return response.json();
+        }).catch(function (error) {
+            console.log(error);
+        });
 
-
-// function loadData() {
-//     let url = "https://www.consumersenergy.com/OutageMap/OutageMap/GetOutageCount?callback=getData";
-//     let updateTimeUrl = "https://www.consumersenergy.com/OutageMap/OutageMap/getLastMapUpdateTime?callback=getData"
-//     fetch(url).then(response =>
-//         response.json().then(data => ({
-//             data: data,
-//             status: response.status
-//         })).then(res => {
-//             console.log(res.data.OutageCount);
-//             document.getElementById("demotext").text = res.data.OutageCount;
-//         }));
-// };
-// loadData();
-// setInterval(loadData, 3000);
-
-
-// function getOutages(evt){
-//   let eventName = evt.data.eventName;
-//   let outageUrl = 'https://www.consumersenergy.com/OutageMap/OutageMap/GetOutageCount';
-//   let updatedUrl = 'https://www.consumersenergy.com/OutageMap/OutageMap/getLastMapUpdateTime';
-
-//   fetch(outageUrl, {
-//     method: "GET",
-//     mode: "no-cors"
-//   }).then(function(response){
-//     return response.json();
-//   }).then(function(myJSON){
-//     console.log(myJSON);
-//     messaging.peerSocket.send(myJSON);
-//   }).catch(function(error){
-//     console.log(error);
-//   });
-// }
+    let combinedData = { "outagesRequest": {}, "updatedRequest": {} };
+    Promise.all([outagesRequest, updatedRequest]).then(function (values) {
+        messaging.peerSocket.send(values);
+        return combinedData;
+    });
+}
