@@ -1,4 +1,5 @@
-<svg class="background">
+<svg>
+  <rect id="background" width="100%" height="100%" x="0" y="0" />
   <use id="container" href="#panoramaview">
     <use id="item1" href="#panoramaview-item">
       <text x="50%" y="50" class="medium-copy-bold">CE Outages Demo</text>
