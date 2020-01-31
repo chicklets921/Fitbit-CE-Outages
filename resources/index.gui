@@ -1,26 +1,69 @@
 <svg>
-  <rect id="background" width="100%" height="100%" x="0" y="0" />
-  <use id="container" href="#panoramaview">
-    <use id="item1" href="#panoramaview-item">
-      <text x="50%" y="50" class="medium-copy-bold">CE Outages Demo</text>
-      <use id="btn" href="#square-button" y="$-20" fill="white">
-        <set href="#text" attributeName="text-buffer" to="Update" />
-      </use>
-      <text id="OutageCount" class="outageInfo" x="50%" y="$+30"></text>
-      <text id="IncidentCount" class="outageInfo" x="50%" y="$"></text>
-      <text id="UpdateTime" class="outageInfo" x="50%" y="$"></text>
-    </use>
+    <rect id="background" width="100%" height="100%" x="0" y="0" />
 
-    <use id="item2" href="#panoramaview-item">
-      <text class="outageInfo" x="50%" y="40%">Total Customers:</text>
-      <text id="CustomerCount" class="outageInfo" x="50%" y="$"></text>
-      <text id="PercentOut" class="outageInfo" x="50%" y="$+20"></text>
-    </use>
+    <use id="container" href="#panoramaview">
 
-    <!-- Have enough pagination dots for your slides (extras are hidden) -->
-    <use id="pagination-dots" href="#pagination-widget" y="8">
-      <use href="#pagination-highlight-dot" />
-      <use href="#pagination-dot" />
+        <use id="item1" href="#panoramaview-item">
+            <text class="outageInfo" x="50%" y="40%">Total Customers:</text>
+            <text id="CustomerCount" class="outageInfo" x="50%" y="$"></text>
+            <text id="PercentOut" class="outageInfo" x="50%" y="$+20"></text>
+        </use>
+
+        <use id="item2" href="#panoramaview-item">
+            <text x="50%" y="50" class="titleText">CE Outages Demo</text>
+
+            <text id="OutageCount" class="outageInfo" x="50%" y="$+20"></text>
+            <text id="IncidentCount" class="outageInfo" x="50%" y="$"></text>
+            <text id="UpdateTime" class="updatedTime" x="50%" y="100%-80"></text>
+
+            <use id="btn" href="#square-button" y="100%-75" fill="white">
+                <set href="#text" attributeName="text-buffer" to="Updates"/>
+            </use>
+        </use>
+
+        <use id="item3" href="#panoramaview-item">
+            <defs>
+                <symbol id="my-tile-item" href="#tile-list-item" focusable="false" pointer-events="none" system-events="all" display="none">
+                    <text id="text" />
+                    <rect id="tile-divider-bottom" class="tile-divider-bottom" />
+                    <rect id="touch-me" pointer-events="all" x="0" y="0" width="100%" height="100%-2" opacity="0" />
+                </symbol>
+            </defs>
+            <use id="my-list" href="#tile-list">
+                <var id="virtual" value="1" />
+                <var id="separator-height-bottom" value="2" />
+
+                <use id="my-pool" href="#tile-list-pool">
+                    <use id="my-pool[0]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[1]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[2]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[3]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[4]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[5]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[6]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[7]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[8]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[9]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[10]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[11]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[12]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[13]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[14]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[15]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[16]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[17]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[18]" href="#my-tile-item" class="tile-list-item" />
+                    <use id="my-pool[19]" href="#my-tile-item" class="tile-list-item" />
+                </use>
+            </use>
+        </use>
+
+        <!-- Have enough pagination dots for your slides (extras are hidden) -->
+        <use id="pagination-dots" href="#pagination-widget" y="5">
+            <use href="#pagination-dot" />
+            <use href="#pagination-dot" />
+            <use href="#pagination-dot" />
+            <use href="#pagination-highlight-dot" />
+        </use>
     </use>
-  </use>
 </svg>

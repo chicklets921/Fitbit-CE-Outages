@@ -23,9 +23,36 @@ OutagesUI.prototype.updateUI = function (state, outageInfo) {
 }
 
 OutagesUI.prototype.updateOutageInfo = function (outageInfo) {
-    this.outages.text = "Outages: " + outageInfo[0]["OutageCount"];
-    this.incidents.text = "Incidents: " + outageInfo[0]["IncidentCount"];
+    this.outages.text = "Outages: " + parseInt(outageInfo[0]["OutageCount"]).toLocaleString();
+    this.incidents.text = "Incidents: " + parseInt(outageInfo[0]["IncidentCount"]).toLocaleString();
     this.updated.text = outageInfo[1]["UpdateTime"];
-    this.total.text = outageInfo[0]["CustomerCount"];
+    this.total.text = parseInt(outageInfo[0]["CustomerCount"]).toLocaleString();
     this.percent.text = outageInfo[0]["PctOut"] + "%";
+}
+
+OutagesUI.prototype.updateOutageList = function (outageInfo) {
+
+    let VTList = document.getElementById("my-list");
+    let NUM_ELEMS = 100;
+
+    VTList.delegate = {
+        getTileInfo: function (index) {
+            return {
+                type: "my-pool",
+                value: "County",
+                index: index
+            };
+        },
+        configureTile: function (tile, info) {
+            if (info.type == "my-pool") {
+                tile.getElementById("text").text = `${info.value} ${info.index}`;
+                let touch = tile.getElementById("touch-me");
+                touch.onclick = evt => {
+                    console.log(`touched: ${info.index}`);
+                };
+            }
+        }
+    };
+    // VTList.length must be set AFTER VTList.delegate
+    VTList.length = NUM_ELEMS;
 }

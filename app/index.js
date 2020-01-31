@@ -9,11 +9,14 @@ const eventName = "triggerEvent";
 let ui = new OutagesUI();
 ui.updateUI("disconnected");
 
+let container = document.getElementById("container");
+let currentIndex = container.value;
+container.value = 1;
+
 btn.addEventListener("click", function () {
     vibration.start("bump");
     sendEventIfReady(eventName);
 });
-
 
 messaging.peerSocket.onopen = function (eventName) {
     ui.updateUI("loading");
@@ -21,8 +24,10 @@ messaging.peerSocket.onopen = function (eventName) {
 }
 
 messaging.peerSocket.onmessage = function (evt) {
-    vibration.start("confirmation-max");
+    // vibration.start("confirmation-max");
     ui.updateUI("loaded", evt.data);
+    ui.updateOutageList(evt.data);
+    console.log(JSON.stringify(evt.data));
 }
 
 messaging.peerSocket.onerror = function (err) {

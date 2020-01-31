@@ -1,15 +1,41 @@
 #background {
-  fill:#0079C1;
+    fill: #0079C1;
 }
 
-.medium-copy-bold {
-  fill: white;
-  text-anchor: middle; 
+.titleText {
+    fill: white;
+    text-anchor: middle;
 }
 
-.outageInfo{
-  fill: white;
-  text-anchor: middle;
-  font-size: 30;
-  text-length: 40;
+.updatedTime {
+    fill: white;
+    text-anchor: middle;
+    font-size: 20;
+    text-length: 20;
+}
+
+.outageInfo {
+    fill: white;
+    text-anchor: middle;
+    font-size: 30;
+    text-length: 20;
+}
+
+.tile-list-item {
+    height: 40;
+}
+
+.tile-list-item text {
+    height: 32;
+    font-family: System-Regular;
+    fill: "white";
+    text-length: 20;
+}
+
+.tile-divider-bottom {
+    x: 0;
+    y: 100%-2;
+    width: 100%;
+    height: 2;
+    fill: white;
 }
