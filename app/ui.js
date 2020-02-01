@@ -32,6 +32,8 @@ OutagesUI.prototype.updateOutageInfo = function (outageInfo) {
 
 OutagesUI.prototype.updateOutageList = function (outageInfo) {
 
+    console.log(JSON.stringify(outageInfo));
+
     let VTList = document.getElementById("my-list");
     let NUM_ELEMS = 100;
 
@@ -39,13 +41,13 @@ OutagesUI.prototype.updateOutageList = function (outageInfo) {
         getTileInfo: function (index) {
             return {
                 type: "my-pool",
-                value: "County",
+                value: outageInfo[2][index]["name"] + " - " + outageInfo[2][index]["count"],
                 index: index
             };
         },
         configureTile: function (tile, info) {
             if (info.type == "my-pool") {
-                tile.getElementById("text").text = `${info.value} ${info.index}`;
+                tile.getElementById("text").text = `${info.value}`;
                 let touch = tile.getElementById("touch-me");
                 touch.onclick = evt => {
                     console.log(`touched: ${info.index}`);
@@ -54,5 +56,6 @@ OutagesUI.prototype.updateOutageList = function (outageInfo) {
         }
     };
     // VTList.length must be set AFTER VTList.delegate
-    VTList.length = NUM_ELEMS;
+    // console.log(JSON.stringify(outageInfo[2]));
+    VTList.length = outageInfo[2].length;
 }

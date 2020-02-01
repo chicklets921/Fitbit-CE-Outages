@@ -27,7 +27,7 @@ messaging.peerSocket.onmessage = function (evt) {
     // vibration.start("confirmation-max");
     ui.updateUI("loaded", evt.data);
     ui.updateOutageList(evt.data);
-    console.log(JSON.stringify(evt.data));
+    // console.log(JSON.stringify(evt.data));
 }
 
 messaging.peerSocket.onerror = function (err) {

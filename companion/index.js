@@ -23,7 +23,6 @@ messaging.peerSocket.onclose = () => {
 messaging.peerSocket.addEventListener("message", (evt) => {
     if (evt.data) {
         outagesApi.currentOutages();
-        // outagesApi.outagesByCounty();
     }
 });
 
